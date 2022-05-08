@@ -7,6 +7,7 @@ import com.azure.storage.blob.BlobContainerClient;
 import com.azure.storage.blob.models.BlobItem;
 import com.restb2b.reprocess.api.constant.ApiErrorCode;
 import com.restb2b.reprocess.api.constant.JsonKey;
+import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 import org.jboss.resteasy.reactive.RestQuery;
 
 import javax.ws.rs.*;
@@ -34,7 +35,7 @@ public class BlobController {
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Path("/upload")
     @POST
-    public Response upload(@FormParam(value = "file") File file) {
+    public Response upload(@RequestBody(name = "file") File file) {
         Map<Object,Object> jsonObject = new HashMap<>();
         String responseMsg;
         try {
